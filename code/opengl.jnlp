@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://www.torpidity.org/apps/opengl/" href="opengl.jnlp">
+
+	<information>
+		<title>Torpidity 3D Engine</title>
+		<vendor>Kevin Mershon</vendor>
+		<description>OpenGL 3D Engine</description>
+		<offline-allowed/>
+	</information>
+
+	<security>
+		<all-permissions/>
+	</security>
+
+	<resources>
+		<j2se href="http://java.sun.com/products/autodl/j2se" version="1.4+"/>
+		<extension name="jogl" href="webstart/jogl/jogl.jnlp" />
+		<extension name="jinput" href="webstart/jinput/jinput.jnlp" />
+		<jar href="JOGLEngine.jar"/>
+	</resources>
+	<application-desc main-class="org.torpidity.jogl.Test"/>
+</jnlp>

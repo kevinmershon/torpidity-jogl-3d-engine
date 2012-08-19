@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JOGLEngine" default="run" basedir=".">
+	<property name="src" location="src"/>
+	<property name="bin" location="bin"/>
+	<property name="lib" location="lib"/>
+	<property name="dist" location="dist"/>
+	<property name="res" location="res"/>
+	<property name="jarfile" location="${dist}/${ant.project.name}.jar"/>
+	<property name="compile.debug" value="true"/>
+	<property name="runtime" location="runtime"/>
+
+	<fileset id="lib.jars" dir="${lib}">
+		<include name="**/*.jar"/>
+	</fileset>
+
+	<path id="lib.path">
+		<fileset refid="lib.jars"/>
+	</path>
+
+	<target name="compile" description="Compile code">
+		<mkdir dir="${bin}"/>
+		<mkdir dir="${lib}"/>
+		<javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no" classpathref="lib.path" debug="${compile.debug}"	source="1.4">
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile" description="Build jar">
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${dist}/lib"/>
+		<jar jarfile="${jarfile}" basedir="${bin}" manifest="Manifest">
+			<fileset dir="${res}"/>
+		</jar>
+		<copy todir="${dist}/lib">
+			<fileset refid="lib.jars"/>
+		</copy>
+		<copy todir="${dist}">
+			<fileset dir="${runtime}"/>
+		</copy>
+	</target>
+
+	<target name="run" depends="jar" description="Run jar file">
+		<java jar="${jarfile}" fork="yes" failonerror="true"/>
+	</target>
+	
+	<target name="clean" description="Remove build and dist directories">
+		<delete dir="${bin}"/>
+		<delete dir="${dist}"/>
+	</target>
+	
+	<target name="sign" depends="jar" description="Sign jarfiles">
+		<signjar jar="${jarfile}" alias="myself" storepass="229129"></signjar>
+	</target>
+	
+	<target name="prep for web" depends="sign" description="Prepare files for web">
+		<mkdir dir="${dist}/web"/>
+		<copy file="opengl.jnlp" todir="${dist}/web/"/>
+		<copy file="${jarfile}" todir="${dist}/web"/>
+	</target>
+
+
+</project>

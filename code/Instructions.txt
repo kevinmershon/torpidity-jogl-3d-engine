@@ -1,0 +1,17 @@
+For JOGL:
+On windows, copy the .dll files from the jogl-natives-win32.jar to:
+C:\Program Files\Java\jdk1.5.0_09\jre\bin
+On linux, copy the .so files from the jogl-natives-linux.jar to:
+/usr/lib/j2sdk1.5-sun/jre/lib/i386/client
+Then running the code from either console or Ant will work.
+
+For JInput:
+Go to https://jinput.dev.java.net/servlets/ProjectDocumentList and download
+the latest build zip for your OS. Dump the jinput.jar file into jogl/runtime/controller.
+Put the native library file in whichever path is listed under the JOGL instructions,
+for your OS.
+
+For JInput in linux: chmod 644 the contents of /dev/input
+
+
+Once the jars are all built and running and such, use "prep for web".

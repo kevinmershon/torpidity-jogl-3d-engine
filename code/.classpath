@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="jogl/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.eclipse.swt"/>
+	<classpathentry kind="lib" path="jogl/lib/jinput.jar"/>
+	<classpathentry kind="lib" path="jogl/lib/jogl.jar" sourcepath="jogl/lib/jogl-src.zip"/>
+	<classpathentry kind="lib" path="jogl/lib/swt.jar"/>
+	<classpathentry kind="output" path="jogl/bin"/>
+</classpath>

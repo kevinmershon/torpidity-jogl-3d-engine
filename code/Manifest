@@ -1,0 +1,2 @@
+Main-Class: org.torpidity.jogl.Test
+Class-path: . lib/jogl.jar controller/jinput.jar lib/swt.jar
